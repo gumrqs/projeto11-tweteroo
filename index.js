@@ -7,7 +7,7 @@ server.use(cors());
 server.use(json());
 
 const users = [];
-
+const usersTweets = [];
 
 
 
@@ -22,7 +22,17 @@ server.post("/sign-up", (req, res) => {
 });
 
 
-server.post("/tweets", (req, res))
+server.post("/tweets", (req, res)=> {
+    const tweet = req.body;
+    const user = req.body.username;
+console.log(user, "USER DO TWEETS")
+    const isUser = users.find((value) => value.username === user);
+    if(!isUser || !tweet.tweet){
+        return res.status(400).send('Unprocessable')
+    }
+    usersTweets.push(tweet);
+    return res.status(201).send('OK');
+});
 
 
 
