@@ -22,7 +22,7 @@ server.post("/sign-up", (req, res) => {
 });
 
 
-
+server.post("/tweets", (req, res))
 
 
 
